@@ -49,7 +49,10 @@ def calculate_dynamic_pricing(current_price, adjustment_factor, weeks,
 
         increase_rate = (variable_effect + decrease_effect) * adjustment_factor
         new_price = last_price * (1 + increase_rate)
-        prices.append(new_price)
+        
+        #50円単位に丸める処理
+        new_price_rounded = round(new_price / 50) * 50
+        prices.append(new_price_rounded)
 
     return prices
 
